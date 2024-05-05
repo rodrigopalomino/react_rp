@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 
-import { C2 } from "./components/c2";
-import { C1 } from "./components/c1";
+import Cabeceraventa  from "./components/cabecera_venta.jsx";
+import  Plantilla  from "./components/plantilla.jsx";
 
 export const Routing = () => {
   return (
     <Routes>
-      <Route path="/c2" element={<C2></C2>}></Route>
-      <Route path="/c1" element={<C1></C1>}></Route>
+      <Route path="/" element={<Plantilla/>}></Route>
+      <Route path="/ventas" element={<Cabeceraventa/>}></Route>
     </Routes>
   );
 };

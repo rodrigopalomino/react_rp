@@ -1,12 +1,12 @@
-import React from 'react';
+import PropTypes from "prop-types";
 
-const Plantilla = ({children}) => {
+export const Plantilla = ({ children }) => {
   return (
     <>
       <div className="d-flex">
         <div
           className="d-flex flex-column flex-shrink-0 bg-body-tertiary vh-100"
-          style={{ width: '4.5rem' }}
+          style={{ width: "4.5rem" }}
         >
           <a
             href="/"
@@ -16,7 +16,11 @@ const Plantilla = ({children}) => {
             data-bs-original-title="Icon-only"
           >
             <div className="text-center fs-3">
-              <i className="fa-solid fa-shield-cat" aria-label="Gato" role="img"></i>
+              <i
+                className="fa-solid fa-shield-cat"
+                aria-label="Gato"
+                role="img"
+              ></i>
             </div>
           </a>
           <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
@@ -74,20 +78,38 @@ const Plantilla = ({children}) => {
               />
             </a>
             <ul className="dropdown-menu text-small shadow">
-              <li><a className="dropdown-item" href="#">Correo</a></li>
-              <li><a className="dropdown-item" href="#">Configuracion</a></li>
-              <li><a className="dropdown-item" href="#">Perfil</a></li>
-              <li><hr className="dropdown-divider" /></li>
-              <li><a className="dropdown-item" href="#">Contacto</a></li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  Correo
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  Configuracion
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  Perfil
+                </a>
+              </li>
+              <li>
+                <hr className="dropdown-divider" />
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  Contacto
+                </a>
+              </li>
             </ul>
           </div>
         </div>
-      <div className='content-wrapper'>
-        {children}
-      </div>
+        <div className="content-wrapper w-100">{children}</div>
       </div>
     </>
   );
 };
 
-export default Plantilla
+Plantilla.propTypes = {
+  children: PropTypes.node,
+};

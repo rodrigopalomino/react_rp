@@ -1,6 +1,6 @@
-import Plantilla from "./plantilla";
+import { Plantilla } from "../shared/plantilla";
 
-const Cabecera_venta = () => {
+export const CabeceraVenta = () => {
   return (
     <>
       <Plantilla>
@@ -9,7 +9,7 @@ const Cabecera_venta = () => {
             <h3 className="card-title mt-3 mb-2">Ventas</h3>
             <button
               type="button"
-              class="btn btn-primary mb-2"
+              className="btn btn-primary mb-2"
               data-bs-toggle="modal"
               data-bs-target="#add"
               id="addModal"
@@ -121,19 +121,31 @@ const Cabecera_venta = () => {
                       <div className="col border">
                         <div className="row">
                           <div className="col">
-                            <input type="text" placeholder="Cliente"/>
+                            <input type="text" placeholder="Cliente" />
                           </div>
                           <div className="col">
-                            <input type="text" placeholder="Cantidad" readOnly/>
+                            <input
+                              type="text"
+                              placeholder="Cantidad"
+                              readOnly
+                            />
                           </div>
                           <div className="col">
-                            <input type="text" placeholder="Precio Bruto" readOnly/>
+                            <input
+                              type="text"
+                              placeholder="Precio Bruto"
+                              readOnly
+                            />
                           </div>
                           <div className="col">
-                            <input type="text" placeholder="IGV" readOnly/>
+                            <input type="text" placeholder="IGV" readOnly />
                           </div>
                           <div className="col">
-                            <input type="text" placeholder="Precio Neto" readOnly/>
+                            <input
+                              type="text"
+                              placeholder="Precio Neto"
+                              readOnly
+                            />
                           </div>
                         </div>
                       </div>
@@ -141,14 +153,12 @@ const Cabecera_venta = () => {
 
                     <div className="row">
                       <div className="col">
-                        <input type="text" placeholder="Producto"/>
-                        <input type="text" placeholder="cantidad"/>
-                        <input type="text" readOnly/>
-                        <input type="text" placeholder="precio_total"/>
+                        <input type="text" placeholder="Producto" />
+                        <input type="text" placeholder="cantidad" />
+                        <input type="text" readOnly />
+                        <input type="text" placeholder="precio_total" />
                       </div>
                     </div>
-
-
                   </div>
 
                   <div className="modal-footer">
@@ -172,5 +182,3 @@ const Cabecera_venta = () => {
     </>
   );
 };
-
-export default Cabecera_venta;

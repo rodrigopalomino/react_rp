@@ -2,14 +2,14 @@ import { Route, Routes } from "react-router-dom";
 
 import { Plantilla } from "./shared/plantilla";
 import { CabeceraVenta } from "./components/cabecera_venta";
-import { PageUsuario } from "./components/usuario/pageUsuario";
+import { PageCliente } from "./components/page_cliente/pageCliente";
 
 export const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<Plantilla />}></Route>
       <Route path="/ventas" element={<CabeceraVenta />}></Route>
-      <Route path="/usuario" element={<PageUsuario />}></Route>
+      <Route path="/cliente" element={<PageCliente />}></Route>
     </Routes>
   );
 };

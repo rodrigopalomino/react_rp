@@ -1,7 +1,8 @@
 import { Plantilla } from "../../shared/plantilla";
-import { TablaUsuario } from "./tablaUsuario";
+import { TablaUsuario } from "./tablaCliente";
+import { ModalCreateCliente } from "./modalCrearCliente";
 
-export const PageUsuario = () => {
+export const PageCliente = () => {
   return (
     <>
       <Plantilla>
@@ -9,7 +10,7 @@ export const PageUsuario = () => {
           <section className="content-header my-4">
             <h1 className="text-center">Clientes</h1>
             <div className="d-flex justify-content-center">
-              <button className="btn btn-primary">Añadir</button>
+              <ModalCreateCliente />
             </div>
           </section>
 

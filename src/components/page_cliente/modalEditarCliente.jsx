@@ -5,11 +5,12 @@ export const ModalEditarCliente = ({ cliente }) => {
   const [categorias, setCategorias] = useState([]);
   const [formValues, setFormValues] = useState({
     nombre: cliente?.nombre || "",
-    apellido: cliente?.apellido || "",
+    apellido_paterno: cliente?.apellido_paterno || "",
+    apellido_materno: cliente?.apellido_materno || "",
     edad: cliente?.edad || "",
     telefono: cliente?.telefono || "",
     email: cliente?.email || "",
-    estado: cliente?.estado || "activo",
+    estado: cliente?.estado || "",
     categoria: cliente?.categoria || "",
   });
 
@@ -30,7 +31,8 @@ export const ModalEditarCliente = ({ cliente }) => {
   useEffect(() => {
     setFormValues({
       nombre: cliente?.nombre || "",
-      apellido: cliente?.apellido || "",
+      apellido_paterno: cliente?.apellido_paterno || "",
+      apellido_materno: cliente?.apellido_materno || "",
       edad: cliente?.edad || "",
       telefono: cliente?.telefono || "",
       email: cliente?.email || "",
@@ -45,6 +47,27 @@ export const ModalEditarCliente = ({ cliente }) => {
       ...prevValues,
       [name]: value,
     }));
+  };
+  const clickEditar = async () => {
+    const updateCliente = {
+      codigo_cliente: cliente.codigo_cliente,
+      ...formValues,
+    };
+
+    try {
+      const response = await fetch(`http://localhost:3000/cliente/update`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateCliente),
+      });
+      const data = await response.json();
+      console.log("Respuesta de la API:", data);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
+    }
   };
 
   return (
@@ -73,10 +96,10 @@ export const ModalEditarCliente = ({ cliente }) => {
                   <form autoComplete="">
                     {/* nombre */}
                     <div className="row mb-2">
-                      <label htmlFor="nombre" className="col-2 col-form-label">
+                      <label htmlFor="nombre" className="col-3 col-form-label">
                         Nombre:
                       </label>
-                      <div className="col-10">
+                      <div className="col-9">
                         <input
                           id="nombre"
                           name="nombre"
@@ -88,21 +111,41 @@ export const ModalEditarCliente = ({ cliente }) => {
                       </div>
                     </div>
 
-                    {/* apellido */}
-                    <div className="row mb-2">
+                    {/* apellido paterno */}
+                    <div className="row d-flex align-items-center">
                       <label
-                        htmlFor="apellido"
-                        className="col-2 col-form-label"
+                        htmlFor="apellido_paterno"
+                        className="col-3 col-form-label"
                       >
-                        Apellido:
+                        Apellido Paterno:
                       </label>
-                      <div className="col-10">
+                      <div className="col-9">
                         <input
-                          id="apellido"
-                          name="apellido"
+                          id="apellido_paterno"
+                          name="apellido_paterno"
                           type="text"
                           className="form-control"
-                          value={formValues.apellido}
+                          value={formValues.apellido_paterno}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+
+                    {/* apellido materno */}
+                    <div className="row mb-2 d-flex align-items-center">
+                      <label
+                        htmlFor="apellido_materno"
+                        className="col-3 col-form-label"
+                      >
+                        Apellido Materno:
+                      </label>
+                      <div className="col-9">
+                        <input
+                          id="apellido_materno"
+                          name="apellido_materno"
+                          type="text"
+                          className="form-control"
+                          value={formValues.apellido_materno}
                           onChange={handleChange}
                         />
                       </div>
@@ -110,7 +153,7 @@ export const ModalEditarCliente = ({ cliente }) => {
 
                     {/* Edad */}
                     <div className="row mb-2">
-                      <label htmlFor="edad" className="col-2 col-form-label">
+                      <label htmlFor="edad" className="col-3 col-form-label">
                         Edad :
                       </label>
                       <div className="col-2">
@@ -129,11 +172,11 @@ export const ModalEditarCliente = ({ cliente }) => {
                     <div className="row mb-2">
                       <label
                         htmlFor="telefono"
-                        className="col-2 col-form-label"
+                        className="col-3 col-form-label"
                       >
                         Telefono:
                       </label>
-                      <div className="col-10">
+                      <div className="col-9">
                         <input
                           id="telefono"
                           name="telefono"
@@ -147,10 +190,10 @@ export const ModalEditarCliente = ({ cliente }) => {
 
                     {/* Email */}
                     <div className="row mb-2">
-                      <label htmlFor="email" className="col-2 col-form-label">
+                      <label htmlFor="email" className="col-3 col-form-label">
                         Email :
                       </label>
-                      <div className="col-10">
+                      <div className="col-9">
                         <input
                           id="email"
                           name="email"
@@ -164,7 +207,7 @@ export const ModalEditarCliente = ({ cliente }) => {
 
                     {/* Estado */}
                     <div className="row mb-2">
-                      <label htmlFor="estado" className="col-2 col-form-label">
+                      <label htmlFor="estado" className="col-3 col-form-label">
                         Estado:
                       </label>
                       <div className="col-4">
@@ -185,7 +228,7 @@ export const ModalEditarCliente = ({ cliente }) => {
                     <div className="row">
                       <label
                         htmlFor="categoria"
-                        className="col-2 col-form-label"
+                        className="col-3 col-form-label"
                       >
                         Categoria:
                       </label>
@@ -219,8 +262,12 @@ export const ModalEditarCliente = ({ cliente }) => {
                   >
                     Cancelar
                   </button>
-                  <button type="button" className="btn btn-primary">
-                    Crear
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={clickEditar}
+                  >
+                    Editar
                   </button>
                 </div>
               </div>

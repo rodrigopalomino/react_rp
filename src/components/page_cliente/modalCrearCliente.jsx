@@ -15,7 +15,8 @@ export const ModalCreateCliente = () => {
 
   const clickCrear = async () => {
     const nombre = document.getElementById("nombre").value;
-    const apellido = document.getElementById("apellido").value;
+    const apellido_paterno = document.getElementById("apellidoPaterno").value;
+    const apellido_materno = document.getElementById("apellidoMaterno").value;
     const edad = document.getElementById("edad").value;
     const telefono = document.getElementById("telefono").value;
     const email = document.getElementById("email").value;
@@ -24,7 +25,8 @@ export const ModalCreateCliente = () => {
 
     const cliente = {
       nombre,
-      apellido,
+      apellido_paterno,
+      apellido_materno,
       edad,
       telefono,
       email,
@@ -91,18 +93,40 @@ export const ModalCreateCliente = () => {
                   </div>
                 </div>
 
-                {/* apellido */}
-                <div className="row mb-2">
-                  <label htmlFor="apellido" className="col-2 col-form-label">
-                    Apellido:
+                {/* apellido Paterno*/}
+                <div className="row d-flex align-items-center">
+                  <label
+                    htmlFor="apellidoPaterno"
+                    className="col-2 col-form-label"
+                  >
+                    Apellido Paterno:
                   </label>
                   <div className="col-10">
                     <input
-                      id="apellido"
-                      name="apellido"
+                      id="apellidoPaterno"
+                      name="apellidoPaterno"
                       type="text"
                       className="form-control"
-                      placeholder="Apellido"
+                      placeholder="Primer Apellido"
+                    />
+                  </div>
+                </div>
+
+                {/* apellido Materno*/}
+                <div className="row mb-2 d-flex align-items-center">
+                  <label
+                    htmlFor="apellidoMaterno"
+                    className="col-2 col-form-label"
+                  >
+                    Apellido Materno:
+                  </label>
+                  <div className="col-10">
+                    <input
+                      id="apellidoMaterno"
+                      name="apellidoMaterno"
+                      type="text"
+                      className="form-control"
+                      placeholder="Segundo Apellido"
                     />
                   </div>
                 </div>

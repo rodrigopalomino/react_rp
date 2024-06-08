@@ -39,7 +39,7 @@ export const Plantilla = ({ children }) => {
             </li>
             <li>
               <a
-                href="/add/1"
+                href="/cliente"
                 className="nav-link py-3 border-bottom rounded-0"
                 data-bs-toggle="tooltip"
                 data-bs-placement="right"

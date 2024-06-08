@@ -18,32 +18,20 @@ export const TablaUsuario = () => {
     fetchClientes();
   }, []);
 
-  const clickEliminarCliente = async (cliente_id) => {
-    try {
-      const response = await fetch(
-        `http://localhost:3000/cliente/delete/${cliente_id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await response.json();
-      console.log("Respuesta de la API:", data);
-      window.location.reload();
-    } catch (error) {
-      console.error("Error al enviar los datos:", error);
-    }
-  };
+  // codigo 6 caracteres iniciales de nombre iniciales de apellidos ropc01
+
+  // basico
+  // regular
+  // frucuente
 
   return (
     <>
       <table id="example1" className="table table-bordered table-striped">
         <thead>
           <tr>
+            <th>Codigo</th>
             <th>Nombre</th>
-            <th>Apellido</th>
+            <th>Apellidos</th>
             <th>Edad</th>
             <th>Telefono</th>
             <th>Email</th>
@@ -54,9 +42,12 @@ export const TablaUsuario = () => {
         <tbody>
           {clientes &&
             clientes.map((cliente) => (
-              <tr key={cliente.cliente_id}>
+              <tr key={cliente.codigo_cliente}>
+                <td>{cliente.codigo_cliente}</td>
                 <td>{cliente.nombre}</td>
-                <td>{cliente.apellido}</td>
+                <td>
+                  {cliente.apellido_paterno} {cliente.apellido_materno}
+                </td>
                 <td>{cliente.edad}</td>
                 <td>{cliente.telefono}</td>
                 <td>{cliente.email}</td>
@@ -77,21 +68,13 @@ export const TablaUsuario = () => {
                     data-bs-toggle="modal"
                     data-bs-target="#modalEditarCliente"
                     onClick={() => {
-                      console.log(cliente.cliente_id);
-                      console.log(cliente);
                       setCliente(cliente);
                     }}
                   >
                     Editar
                   </button>
 
-                  <button className="btn btn-warning mx-2">Imprimir</button>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => clickEliminarCliente(cliente.cliente_id)}
-                  >
-                    Eliminar
-                  </button>
+                  <button className="btn btn-warning mx-2">Reportes</button>
                 </td>
               </tr>
             ))}
